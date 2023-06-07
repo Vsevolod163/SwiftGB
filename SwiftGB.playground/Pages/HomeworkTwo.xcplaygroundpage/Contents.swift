@@ -25,4 +25,4 @@ let mushroom = Pizza.mushroom
 
 // 3. Добавить возможность получения названия пиццы через rawValue.
 
-getTotalAmount(sum: 100, percent: 0.2, time: 2)
+print(pepperoni.rawValue, margarita.rawValue, mushroom.rawValue)
