@@ -20,7 +20,7 @@ numberOne * numberTwo > 10 ? print(numberOne) : print(numberTwo)
 
 var k = 9
 
-for number in 10...50 where number % 2 != 0 {
+for number in 10...50 where !number.isMultiple(of: 2) {
     (number + k).isMultiple(of: 2) ? k += 2 : print("Next")
 }
 
