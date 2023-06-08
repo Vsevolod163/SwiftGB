@@ -1,7 +1,7 @@
 
 // 1. Вывести в консоль все чётные числа от 0 до 100, включая 0.
  
-for number in 0...100 {
+for number in 0...100 where number.isMultiple(of: 2) {
     print(number)
 }
 
