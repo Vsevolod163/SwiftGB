@@ -47,4 +47,19 @@ newNumbers.sort()
 
 print(newNumbers)
 
+// 3. Написать функцию, которая на вход принимает целое число, а возвращает массив,
+// который сформирован по следующим правилам: количество элементов соответствует
+// переданному числу, массив начинается с 1, каждый последующий элемент больше
+// предыдущего в 2 раза.
 
+func getNumbers(with number: Int) -> [Int] {
+    var numbers = Array(repeating: 1, count: number)
+    
+    for index in numbers.indices where index != 0 {
+        numbers[index] = numbers[index - 1] * 2
+    }
+    
+    return numbers
+}
+
+print(getNumbers(with: 5))
