@@ -4,7 +4,6 @@
 // сколько заплатит покупатель (необходимо вывести его номер по порядку,
 // чай, который он заказал и стоимость).
 
-
 enum Tea: String {
     case green
     case black
@@ -45,7 +44,7 @@ var newNumbers = numbers.compactMap { $0 }
 newNumbers.filter { ![0, 4].contains($0) }
 newNumbers.sort()
 
-print(newNumbers)
+print(newNumbers, "\n")
 
 // 3. Написать функцию, которая на вход принимает целое число, а возвращает массив,
 // который сформирован по следующим правилам: количество элементов соответствует
