@@ -31,3 +31,20 @@ let queue: [Tea] = [
 for (index, tea) in queue.enumerated() {
     print(index, tea, teaTypes[tea] ?? Tea.self)
 }
+
+print()
+
+// 2. Есть массив [-4, 5, 10, nil, 4, nil, 25, 0, nil, 16, 75, -20, -7, 15, 0, nil].
+// Необходимо создать новый массив, который будет состоять из элементов старого,
+// но не должно быть nil, не должно быть 0 и 4, а также массив должен быть
+// отсортирован по возрастанию.
+
+let numbers = [-4, 5, 10, nil, 4, nil, 25, 0, nil, 16, 75, -20, -7, 15, 0, nil]
+
+var newNumbers = numbers.compactMap { $0 }
+newNumbers.filter { ![0, 4].contains($0) }
+newNumbers.sort()
+
+print(newNumbers)
+
+
