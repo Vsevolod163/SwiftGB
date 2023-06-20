@@ -31,6 +31,12 @@ final class Pizzeria {
         }
     }
     
+    var allTables: [Table] {
+        get {
+            tables
+        }
+    }
+    
     init(pizzas: [Pizza], product: MenuProtocol, menu: [MenuProtocol], workers: [Worker], tables: [Table] = [Table(places: 4, cafe: .dodo), Table(places: 5, cafe: .dominos)]) {
         self.pizzas = pizzas
         self.product = product
@@ -119,4 +125,46 @@ extension Pizzeria: StatusProtocol {
     func closed() {
         print("Closed")
     }
+}
+
+let pizzeria = Pizzeria(
+    pizzas: [
+        Pizza(
+            cost: 500,
+            type: .mushroom,
+            dough: .thin,
+            additives: [.cheese]
+        )
+    ],
+    product: FrenchFries(cost: 100, size: "Big"),
+    menu: [
+        Pizza(
+            cost: 700,
+            type: .pepperoni,
+            dough: .thin,
+            additives: [.tomato]
+        ),
+        Pizza(
+            cost: 400,
+            type: .margarita,
+            dough: .fat,
+            additives: [.cheese]
+        )
+    ],
+    workers: [
+        Worker(
+            name: "Sara",
+            salary: 30000,
+            position: .cashier
+        ),
+        Worker(
+            name: "John",
+            salary: 35000,
+            position: .cook
+        )
+    ]
+)
+
+pizzeria.allTables.forEach { table in
+    print(table.isSuit(5))
 }
