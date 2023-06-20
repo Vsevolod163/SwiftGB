@@ -54,6 +54,18 @@ final class Pizzeria {
     }
 }
 
+final class Table {
+    private let places: Int
+    
+    init(places: Int) {
+        self.places = places
+    }
+    
+    func isSuit(_ guests: Int) -> Bool {
+        guests > places ? false : true
+    }
+}
+
 struct Pizza: MenuProtocol {
     let cost: Int
     let type: PizzaType
