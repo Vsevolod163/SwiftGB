@@ -3,7 +3,68 @@
 // в которой будет стоимость и размер картошки и сделать так, чтобы в классе
 // пиццерии была одна переменная, в которую можно было бы класть и пиццу, и картошку фри.
 
+protocol MenuProtocol {
+    
+}
 
+final class Pizzeria {
+    private var pizzas: [Pizza]
+    private var product: MenuProtocol
+    
+    var allPizzas: [Pizza] {
+        get {
+            pizzas
+        }
+    }
+    
+    var pizzeriaProduct: MenuProtocol {
+        get {
+            product
+        } set {
+            product = newValue
+        }
+    }
+    
+    init(pizzas: [Pizza], product: MenuProtocol) {
+        self.pizzas = pizzas
+        self.product = product
+    }
+    
+    func addPizza(pizza: Pizza) {
+        pizzas.append(pizza)
+    }
+}
+
+struct Pizza: MenuProtocol {
+    let cost: Int
+    let type: PizzaType
+    let dough: Dough
+    let additives: [Additive]
+}
+
+struct FrenchFries: MenuProtocol {
+    let cost: Int
+    let size: String
+}
+
+enum PizzaType: String {
+    case pepperoni = "Pepperoni"
+    case margarita = "Margarita"
+    case mushroom = "Mushroom"
+    case hawaiian = "Hawaiian"
+    case fourCheese = "Four Cheese"
+}
+
+enum Dough {
+    case fat
+    case thin
+}
+
+enum Additive {
+    case pepperoni
+    case tomato
+    case cheese
+}
 
 // 2. Добавьте в класс пиццерии функцию, которая будет добавлять новую позицию в меню.
 
