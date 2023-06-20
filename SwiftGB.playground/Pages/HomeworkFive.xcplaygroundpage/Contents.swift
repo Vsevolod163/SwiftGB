@@ -51,7 +51,7 @@ struct Pizza: MenuProtocol {
 
 struct FrenchFries: MenuProtocol {
     let cost: Int
-    let size: String
+    let size: FrenchFriesSize
 }
 
 enum PizzaType: String {
@@ -73,6 +73,11 @@ enum Additive {
     case cheese
 }
 
+enum FrenchFriesSize {
+    case small
+    case medium
+    case big
+}
 
 extension Pizzeria: StatusProtocol {
     func open() {

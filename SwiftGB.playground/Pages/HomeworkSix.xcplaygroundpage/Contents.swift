@@ -77,7 +77,7 @@ struct Pizza: MenuProtocol {
 
 struct FrenchFries: MenuProtocol {
     let cost: Int
-    let size: String
+    let size: FrenchFriesSize
 }
 
 struct Worker {
@@ -117,6 +117,13 @@ enum Cafe {
     case dominos
 }
 
+enum FrenchFriesSize {
+    case small
+    case medium
+    case big
+}
+
+
 extension Pizzeria: StatusProtocol {
     func open() {
         print("Open")
@@ -136,7 +143,7 @@ let pizzeria = Pizzeria(
             additives: [.cheese]
         )
     ],
-    product: FrenchFries(cost: 100, size: "Big"),
+    product: FrenchFries(cost: 100, size: .big),
     menu: [
         Pizza(
             cost: 700,
