@@ -17,21 +17,13 @@ protocol StatusProtocol {
 }
 
 final class Pizzeria {
+    private let product: MenuProtocol
     private var pizzas: [Pizza]
-    private var product: MenuProtocol
     private var menu: [MenuProtocol]
     
     var allPizzas: [Pizza] {
         get {
             pizzas
-        }
-    }
-    
-    var pizzeriaProduct: MenuProtocol {
-        get {
-            product
-        } set {
-            product = newValue
         }
     }
     
