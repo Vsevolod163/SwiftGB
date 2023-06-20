@@ -19,10 +19,11 @@ protocol StatusProtocol {
 }
 
 final class Pizzeria {
+    private let product: MenuProtocol
+    private let workers: [Worker]
+    private let tables: [Table]
     private var pizzas: [Pizza]
-    private var product: MenuProtocol
     private var menu: [MenuProtocol]
-    private var workers: [Worker]
     
     var allPizzas: [Pizza] {
         get {
@@ -30,19 +31,12 @@ final class Pizzeria {
         }
     }
     
-    var pizzeriaProduct: MenuProtocol {
-        get {
-            product
-        } set {
-            product = newValue
-        }
-    }
-    
-    init(pizzas: [Pizza], product: MenuProtocol, menu: [MenuProtocol], workers: [Worker]) {
+    init(pizzas: [Pizza], product: MenuProtocol, menu: [MenuProtocol], workers: [Worker], tables: [Table] = [Table(places: 4, cafe: .dodo), Table(places: 5, cafe: .dominos)]) {
         self.pizzas = pizzas
         self.product = product
         self.menu = menu
         self.workers = workers
+        self.tables = tables
     }
     
     func addProductToMenu(product: MenuProtocol) {
@@ -56,9 +50,11 @@ final class Pizzeria {
 
 final class Table {
     private let places: Int
+    private let cafe: Cafe
     
-    init(places: Int) {
+    init(places: Int, cafe: Cafe) {
         self.places = places
+        self.cafe = cafe
     }
     
     func isSuit(_ guests: Int) -> Bool {
@@ -106,6 +102,13 @@ enum Additive {
 enum Position {
     case cashier
     case cook
+}
+
+enum Cafe {
+    case papaJones
+    case dodo
+    case iskra
+    case dominos
 }
 
 extension Pizzeria: StatusProtocol {
