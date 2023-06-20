@@ -3,13 +3,23 @@
 // в которой будет стоимость и размер картошки и сделать так, чтобы в классе
 // пиццерии была одна переменная, в которую можно было бы класть и пиццу, и картошку фри.
 
-protocol MenuProtocol {
-    
+// 2. Добавьте в класс пиццерии функцию, которая будет добавлять новую позицию в меню.
+
+// 3. Создайте протокол, в котором будут содержаться функции открытия и закрытия.
+
+// 4. Написать расширение для класса пиццерии, в котором будет реализован протокол из пункта 3.
+
+protocol MenuProtocol {}
+
+protocol StatusProtocol {
+    func open()
+    func closed()
 }
 
 final class Pizzeria {
     private var pizzas: [Pizza]
     private var product: MenuProtocol
+    private var menu: [MenuProtocol]
     
     var allPizzas: [Pizza] {
         get {
@@ -25,9 +35,14 @@ final class Pizzeria {
         }
     }
     
-    init(pizzas: [Pizza], product: MenuProtocol) {
+    init(pizzas: [Pizza], product: MenuProtocol, menu: [MenuProtocol]) {
         self.pizzas = pizzas
         self.product = product
+        self.menu = menu
+    }
+    
+    func addProductToMenu(product: MenuProtocol) {
+        menu.append(product)
     }
     
     func addPizza(pizza: Pizza) {
@@ -66,21 +81,19 @@ enum Additive {
     case cheese
 }
 
-// 2. Добавьте в класс пиццерии функцию, которая будет добавлять новую позицию в меню.
 
-
-
-// 3. Создайте протокол, в котором будут содержаться функции открытия и закрытия.
-
-
-
-// 4. Написать расширение для класса пиццерии, в котором будет реализован протокол из пункта 3.
-
-
+extension Pizzeria: StatusProtocol {
+    func open() {
+        print("Open")
+    }
+    
+    func closed() {
+        print("Closed")
+    }
+}
 
 // 5. Написать функцию, в которой происходит вычитание одного числа из другого.
 // Функция должна работать и с Int, и с Double.Функция должна возвращать результат вычитания.
-
 
 func subtract<T: Numeric>(_ a: T, _ b: T) -> T {
     a - b
